@@ -1,0 +1,24 @@
+[package]
+name = "racfs-vfs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+parking_lot.workspace = true
+prometheus.workspace = true
+radix_trie.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+
+racfs-core.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true
+
+racfs-plugin-memfs.workspace = true
+racfs-plugin-s3fs.workspace = true
+racfs-plugin-streamfs.workspace = true

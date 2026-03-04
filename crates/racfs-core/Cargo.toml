@@ -1,0 +1,31 @@
+[package]
+name = "racfs-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+bitflags.workspace = true
+bytes.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+radix_trie.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+snafu.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+
+# Compression (zstd); always built. Enable/disable at runtime via config (e.g. StreamFS compression: None vs Some(compressor)).
+zstd.workspace = true
+foyer.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+tokio.workspace = true
+
+[[example]]
+name = "foyer_cache_usage"

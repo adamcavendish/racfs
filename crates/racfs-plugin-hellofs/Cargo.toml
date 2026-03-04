@@ -1,0 +1,16 @@
+[package]
+name = "racfs-plugin-hellofs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+parking_lot.workspace = true
+
+racfs-core.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

@@ -1,0 +1,12 @@
+[package]
+name = "racfs-http-error"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+axum.workspace = true
+serde.workspace = true
+utoipa.workspace = true

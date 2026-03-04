@@ -1,0 +1,23 @@
+# RACFS server config: MemFS + DevFS + VectorFS
+# VectorFS provides document storage with vector embeddings and similarity search.
+# Optional: db_path for persistence, embedding_url for external embedding API.
+# Usage: cargo run -p racfs-server -- --config examples/configs/vectorfs.toml
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+
+[mounts.dev]
+path = "/dev"
+fs_type = "devfs"
+
+[mounts.vectors]
+path = "/vectors"
+fs_type = "vectorfs"
+# Optional: persist vectors to disk (set db_path; omit for in-memory only)
+# db_path = "/tmp/racfs_vector_db"
+# Optional: URL for embedding API (POST text, get JSON array of floats)
+# embedding_url = "http://localhost:8081/embed"

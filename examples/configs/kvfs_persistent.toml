@@ -1,0 +1,11 @@
+# RACFS server config: KvFS with SQLite persistence
+# KvFS stores keys/values in the given SQLite file; data survives restarts.
+# Usage: mkdir -p data && cargo run -p racfs-server -- --config examples/configs/kvfs_persistent.toml
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.kv]
+path = "/kv"
+fs_type = "kvfs"
+database_path = "./data/kv.db"

@@ -1,0 +1,20 @@
+[package]
+name = "racfs-plugin-kvfs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+rusqlite.workspace = true
+tracing.workspace = true
+
+racfs-core.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio.workspace = true

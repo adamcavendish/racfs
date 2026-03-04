@@ -1,0 +1,20 @@
+# RACFS server config: MemFS + DevFS + LocalFS
+# LocalFS serves files from a directory on disk.
+# Usage: cargo run -p racfs-server -- --config examples/configs/localfs.toml
+# Ensure the root path exists: mkdir -p /tmp/racfs-data
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+
+[mounts.dev]
+path = "/dev"
+fs_type = "devfs"
+
+[mounts.data]
+path = "/data"
+fs_type = "localfs"
+root = "/tmp/racfs-data"

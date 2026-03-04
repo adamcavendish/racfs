@@ -1,0 +1,47 @@
+[package]
+name = "racfs-fuse"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = []
+# Link against libfuse3 for mount/umount (Linux). Without this, fuser uses its pure-Rust mount on Linux.
+libfuse3 = ["fuser/libfuse3"]
+
+[[bin]]
+name = "racfs-fuse"
+path = "src/main.rs"
+
+[[bench]]
+name = "fuse_async_ops"
+harness = false
+
+[dependencies]
+async-trait.workspace = true
+base64.workspace = true
+bytes.workspace = true
+clap.workspace = true
+dashmap.workspace = true
+fuser.workspace = true
+libc.workspace = true
+parking_lot.workspace = true
+snafu.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+racfs-client.workspace = true
+
+[dev-dependencies]
+axum.workspace = true
+criterion.workspace = true
+tokio.workspace = true
+
+racfs-core.workspace = true
+racfs-plugin-devfs.workspace = true
+racfs-plugin-memfs.workspace = true
+racfs-server.workspace = true
+racfs-vfs.workspace = true

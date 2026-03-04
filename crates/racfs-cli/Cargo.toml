@@ -1,0 +1,21 @@
+[package]
+name = "racfs-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "racfs"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+indicatif.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+racfs-client.workspace = true
+racfs-fuse.workspace = true

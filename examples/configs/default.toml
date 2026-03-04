@@ -1,0 +1,14 @@
+# RACFS server config: default mounts (MemFS + DevFS)
+# Same as running without a config file.
+# Usage: cargo run -p racfs-server -- --config examples/configs/default.toml
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+
+[mounts.dev]
+path = "/dev"
+fs_type = "devfs"

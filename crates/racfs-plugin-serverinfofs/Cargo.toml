@@ -1,0 +1,19 @@
+[package]
+name = "racfs-plugin-serverinfofs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+chrono.workspace = true
+hostname.workspace = true
+num_cpus.workspace = true
+parking_lot.workspace = true
+
+racfs-core.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

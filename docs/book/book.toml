@@ -1,0 +1,15 @@
+[book]
+title = "RACFS Book"
+description = "Documentation for the Remote Agent Call File System"
+authors = ["RACFS Team"]
+language = "en"
+src = "src"
+
+[build]
+create-missing = true
+build-dir = "build"
+
+[output.html]
+default-theme = "light"
+git-repository-url = "https://github.com/adamcavendish/racfs"
+edit-url-template = "https://github.com/adamcavendish/racfs/edit/master/docs/book/{path}"

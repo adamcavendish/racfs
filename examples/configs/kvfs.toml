@@ -1,0 +1,18 @@
+# RACFS server config: MemFS + DevFS + KvFS
+# KvFS is an in-memory key-value store exposed as a filesystem (create/write/read/rename).
+# Usage: cargo run -p racfs-server -- --config examples/configs/kvfs.toml
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+
+[mounts.dev]
+path = "/dev"
+fs_type = "devfs"
+
+[mounts.kv]
+path = "/kv"
+fs_type = "kvfs"

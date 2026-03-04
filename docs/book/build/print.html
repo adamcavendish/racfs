@@ -1,0 +1,549 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RACFS Book</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="Documentation for the Remote Agent Call File System">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-ecdba99e.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-ed80081c.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">RACFS Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/adamcavendish/racfs" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><strong>RACFS</strong> (Remote Agent Call File System) is a virtual filesystem implemented in Rust. It provides:</p>
+<ul>
+<li><strong>Pluggable backends</strong> — Storage is implemented by plugins (MemFS, LocalFS, S3FS, and more). Each plugin implements the same <code>FileSystem</code> trait.</li>
+<li><strong>REST API</strong> — The server exposes the filesystem over HTTP. You can read and write files via standard HTTP endpoints.</li>
+<li><strong>FUSE mount</strong> — Mount any RACFS server as a local directory using the FUSE layer. The kernel talks to your RFS server over HTTP.</li>
+<li><strong>Client and CLI</strong> — Use the HTTP client from your own code, or the <code>racfs</code> CLI for copy, tree, mount, and other operations.</li>
+</ul>
+<p>This book focuses on <strong>plugins</strong>: what each plugin does, how to configure it, and typical use cases. For high-level architecture, server configuration, FUSE usage, and plugin development, see the <a href="SUMMARY.html#more-documentation">More documentation</a> section at the end of the summary.</p>
+<h2 id="quick-start"><a class="header" href="#quick-start">Quick start</a></h2>
+<p>Build and test:</p>
+<pre><code class="language-bash">cargo build --workspace
+cargo test --workspace
+cargo clippy --workspace -- -D warnings
+</code></pre>
+<p>Run the server (default: MemFS at <code>/memfs</code>, DevFS at <code>/dev</code>):</p>
+<pre><code class="language-bash">cargo run -p racfs-server
+</code></pre>
+<p>Server listens on <code>http://localhost:8080</code>. OpenAPI UI: <code>/swagger-ui</code>.</p>
+<p>Mount via FUSE:</p>
+<pre><code class="language-bash">cargo build --release -p racfs-fuse
+./target/release/racfs-fuse /tmp/racfs --server http://localhost:8080
+# Use /tmp/racfs like a normal directory; unmount with fusermount -u /tmp/racfs (Linux) or umount /tmp/racfs (macOS)
+</code></pre>
+<p>Use a config file to mount more plugins:</p>
+<pre><code class="language-bash">RACFS_CONFIG=examples/configs/default.toml cargo run -p racfs-server
+</code></pre>
+<p>See <a href="../../examples/configs/README.html">examples/configs/README.md</a> for available configs (localfs, kvfs, vectorfs, queuefs, etc.).</p>
+<h2 id="reading-this-book"><a class="header" href="#reading-this-book">Reading this book</a></h2>
+<ul>
+<li><strong><a href="plugins/overview.html">Plugins overview</a></strong> — Summary of all built-in plugins and how they are mounted.</li>
+<li><strong>Individual plugin pages</strong> — One page per plugin with a short introduction, config options, and layout or usage notes.</li>
+</ul>
+<p>To build and serve this book locally:</p>
+<pre><code class="language-bash">cargo install mdbook
+cd docs/book &amp;&amp; mdbook build
+# Or serve with live reload:
+cd docs/book &amp;&amp; mdbook serve --open
+</code></pre>
+<p>The generated HTML is in <code>docs/book/build/</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="memfs"><a class="header" href="#memfs">MemFS</a></h1>
+<p><strong>In-memory filesystem.</strong> No persistence; all data is lost when the server stops. Useful for caching, temporary scratch space, or tests.</p>
+<h2 id="config"><a class="header" href="#config">Config</a></h2>
+<p>No extra options. Mount with:</p>
+<pre><code class="language-toml">[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+</code></pre>
+<h2 id="behavior"><a class="header" href="#behavior">Behavior</a></h2>
+<ul>
+<li>Full read/write: create, mkdir, read, write, rename, remove, chmod, etc.</li>
+<li>No disk I/O; all state lives in process memory.</li>
+<li>Default mount in the server (with DevFS at <code>/dev</code>) when no config is provided.</li>
+</ul>
+<h2 id="crate"><a class="header" href="#crate">Crate</a></h2>
+<p><code>racfs-plugin-memfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="localfs"><a class="header" href="#localfs">LocalFS</a></h1>
+<p><strong>Local disk filesystem.</strong> Uses a directory on the server’s filesystem as the root. All paths under the mount are relative to that root.</p>
+<h2 id="config-1"><a class="header" href="#config-1">Config</a></h2>
+<p>Requires <code>root</code> — the absolute path to the directory on disk:</p>
+<pre><code class="language-toml">[mounts.data]
+path = "/data"
+fs_type = "localfs"
+root = "/tmp/racfs-data"
+</code></pre>
+<p>Create the directory first, e.g. <code>mkdir -p /tmp/racfs-data</code>.</p>
+<h2 id="behavior-1"><a class="header" href="#behavior-1">Behavior</a></h2>
+<ul>
+<li>Standard POSIX-like semantics: create, read, write, mkdir, read_dir, rename, remove, chmod.</li>
+<li>Supports optional per-mount caching (see example configs <code>cached.toml</code>).</li>
+</ul>
+<h2 id="crate-1"><a class="header" href="#crate-1">Crate</a></h2>
+<p><code>racfs-plugin-localfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="devfs"><a class="header" href="#devfs">DevFS</a></h1>
+<p><strong>Device and system information filesystem.</strong> Exposes virtual device files and host info as read-only (or fixed-behavior) files.</p>
+<h2 id="config-2"><a class="header" href="#config-2">Config</a></h2>
+<p>No extra options:</p>
+<pre><code class="language-toml">[mounts.dev]
+path = "/dev"
+fs_type = "devfs"
+</code></pre>
+<h2 id="layout-and-behavior"><a class="header" href="#layout-and-behavior">Layout and behavior</a></h2>
+<ul>
+<li><strong>Device files</strong>: <code>/dev/null</code>, <code>/dev/zero</code>, <code>/dev/random</code>, <code>/dev/urandom</code> — behave like the real devices (read returns zeros or random bytes; writes to null are dropped).</li>
+<li><strong>System info</strong>: e.g. hostname, CPU count, exposed as files under the mount.</li>
+<li>Read-only for most paths; writes to <code>/dev/null</code> are accepted and discarded.</li>
+</ul>
+<h2 id="crate-2"><a class="header" href="#crate-2">Crate</a></h2>
+<p><code>racfs-plugin-devfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="kvfs"><a class="header" href="#kvfs">KvFS</a></h1>
+<p><strong>Key-value store as a filesystem.</strong> Keys are paths; values are file contents. In-memory by default; useful for config, flags, or simple key-value access over the RACFS API.</p>
+<h2 id="config-3"><a class="header" href="#config-3">Config</a></h2>
+<p>No extra options:</p>
+<pre><code class="language-toml">[mounts.kv]
+path = "/kv"
+fs_type = "kvfs"
+</code></pre>
+<h2 id="behavior-2"><a class="header" href="#behavior-2">Behavior</a></h2>
+<ul>
+<li>Create a “file” at a path to set a key; read the file to get the value.</li>
+<li>Supports create, read, write, rename, remove, mkdir, read_dir.</li>
+<li>Keys are stored in memory; no persistence unless the backend is extended.</li>
+</ul>
+<h2 id="crate-3"><a class="header" href="#crate-3">Crate</a></h2>
+<p><code>racfs-plugin-kvfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sqlfs"><a class="header" href="#sqlfs">SQLfs</a></h1>
+<p><strong>SQLite-backed filesystem.</strong> Stores files and directory structure in a SQLite database. Good for single-file persistence, embedded use, or when you want SQL-backed metadata.</p>
+<h2 id="config-4"><a class="header" href="#config-4">Config</a></h2>
+<p>Configure the database path (and any SQLite options your build supports). See server config schema and example configs for the exact keys.</p>
+<h2 id="behavior-3"><a class="header" href="#behavior-3">Behavior</a></h2>
+<ul>
+<li>Implements full <code>FileSystem</code>: create, read, write, mkdir, read_dir, rename, remove, chmod.</li>
+<li>Data and metadata are stored in SQLite tables.</li>
+<li>Suitable for moderate-sized trees and single-server deployments.</li>
+</ul>
+<h2 id="crate-4"><a class="header" href="#crate-4">Crate</a></h2>
+<p><code>racfs-plugin-sqlfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="httpfs"><a class="header" href="#httpfs">HttpFS</a></h1>
+<p><strong>HTTP client as a filesystem.</strong> You write request parameters (URL, method, headers, body) to virtual files and read responses (status, headers, body) from other files. Useful for scripting HTTP calls or caching GET responses.</p>
+<h2 id="layout"><a class="header" href="#layout">Layout</a></h2>
+<p>Rough structure:</p>
+<ul>
+<li><strong>requests/</strong> — Create a directory per request (e.g. <code>requests/my-id/</code>). Write <code>url</code>, <code>method</code>, optional <code>headers.json</code>, <code>body</code>, then write to <code>trigger</code> to send the request.</li>
+<li><strong>responses/</strong> — After triggering, read <code>responses/my-id/status</code>, <code>headers.json</code>, <code>body</code>.</li>
+<li><strong>cache/</strong> — Cached GET responses by URL (when caching is enabled).</li>
+</ul>
+<h2 id="config-5"><a class="header" href="#config-5">Config</a></h2>
+<p>No mandatory options; optional cache settings can be exposed via config. See crate docs for the exact layout and semantics.</p>
+<h2 id="crate-5"><a class="header" href="#crate-5">Crate</a></h2>
+<p><code>racfs-plugin-httpfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="s3fs"><a class="header" href="#s3fs">S3FS</a></h1>
+<p><strong>S3-compatible object storage filesystem.</strong> Uses a bucket (and optional prefix) as the backend. Supports multipart uploads for large files.</p>
+<h2 id="config-6"><a class="header" href="#config-6">Config</a></h2>
+<p>Requires S3 endpoint and credentials (e.g. bucket, region, access key). See <code>racfs-plugin-s3fs</code> and server config for <code>S3Config</code> fields (bucket, region, endpoint override, etc.).</p>
+<pre><code class="language-toml">[mounts.s3]
+path = "/s3"
+fs_type = "s3fs"
+# ... S3-specific options (bucket, region, etc.)
+</code></pre>
+<h2 id="behavior-4"><a class="header" href="#behavior-4">Behavior</a></h2>
+<ul>
+<li>Paths map to object keys. Create/write uploads objects; read downloads them.</li>
+<li>Multipart uploads for large writes.</li>
+<li>Optional caching (e.g. Foyer) for frequently read objects; see performance-tuning docs.</li>
+</ul>
+<h2 id="crate-6"><a class="header" href="#crate-6">Crate</a></h2>
+<p><code>racfs-plugin-s3fs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vectorfs"><a class="header" href="#vectorfs">VectorFS</a></h1>
+<p><strong>Vector database filesystem.</strong> Stores documents as files and supports similarity search using vector embeddings. Good for RAG, semantic search, or document indexing.</p>
+<h2 id="layout-1"><a class="header" href="#layout-1">Layout</a></h2>
+<ul>
+<li><strong>documents/</strong> — Store documents as files (e.g. <code>documents/{id}.txt</code>). Writing a file indexes it (optionally using an embedding API).</li>
+<li><strong>index/</strong> — Read-only: <code>count</code>, <code>status</code> (e.g. “ready” or “indexing”).</li>
+<li><strong>search/</strong> — Create a directory per query (e.g. <code>search/{query_id}/</code>). Write the query to <code>query.txt</code>, read <code>matches.txt</code> for ranked results (e.g. JSON).</li>
+</ul>
+<h2 id="config-7"><a class="header" href="#config-7">Config</a></h2>
+<p>Optional:</p>
+<ul>
+<li><strong>db_path</strong> — Persistence path for the vector index.</li>
+<li><strong>embedding_url</strong> — URL of the embedding API used to compute vectors.</li>
+</ul>
+<p>See <code>examples/configs/vectorfs.toml</code> and <code>VectorConfig</code> in the crate.</p>
+<h2 id="crate-7"><a class="header" href="#crate-7">Crate</a></h2>
+<p><code>racfs-plugin-vectorfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="queuefs"><a class="header" href="#queuefs">QueueFS</a></h1>
+<p><strong>Message queue as a filesystem.</strong> Directories are queues; you push by writing files, and consume via head/tail and acknowledgment files (e.g. <code>.ack</code>).</p>
+<h2 id="layout-and-usage"><a class="header" href="#layout-and-usage">Layout and usage</a></h2>
+<ul>
+<li>Create a directory to create a queue (e.g. <code>mkdir /queues/myqueue</code>).</li>
+<li>Write a “message” by creating/writing a file under that directory.</li>
+<li>Consumers read from the head (or tail) of the queue; acknowledging is done via a special file (e.g. <code>.ack</code>) so messages are marked consumed or removed.</li>
+</ul>
+<p>Exact semantics (naming, ordering, ack format) are defined in the plugin; see crate docs and tests.</p>
+<h2 id="config-8"><a class="header" href="#config-8">Config</a></h2>
+<p>No extra options in the typical config:</p>
+<pre><code class="language-toml">[mounts.queues]
+path = "/queues"
+fs_type = "queuefs"
+</code></pre>
+<h2 id="crate-8"><a class="header" href="#crate-8">Crate</a></h2>
+<p><code>racfs-plugin-queuefs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="streamfs"><a class="header" href="#streamfs">StreamFS</a></h1>
+<p><strong>Streaming data filesystem.</strong> Provides named streams you can append to and read from, with optional compression and configurable buffer/history size.</p>
+<h2 id="config-9"><a class="header" href="#config-9">Config</a></h2>
+<p>Optional parameters (see example configs):</p>
+<ul>
+<li><strong>buffer_size</strong> — Size of the in-memory buffer per stream.</li>
+<li><strong>history_size</strong> — How much history to keep.</li>
+<li><strong>max_streams</strong> — Maximum number of streams.</li>
+</ul>
+<pre><code class="language-toml">[mounts.streams]
+path = "/streams"
+fs_type = "streamfs"
+buffer_size = 65536
+history_size = 10
+max_streams = 100
+</code></pre>
+<h2 id="behavior-5"><a class="header" href="#behavior-5">Behavior</a></h2>
+<ul>
+<li>Create or open a “stream” (file path); write appends to the stream, read returns data from the stream (with optional decompression).</li>
+<li>Useful for logs, event streams, or real-time data that multiple readers can consume.</li>
+</ul>
+<h2 id="crate-9"><a class="header" href="#crate-9">Crate</a></h2>
+<p><code>racfs-plugin-streamfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="streamrotatefs"><a class="header" href="#streamrotatefs">StreamRotateFS</a></h1>
+<p><strong>Rotating log files filesystem.</strong> Writes go to a “current” file; when it reaches a size or count limit, it rotates (e.g. renames to a numbered file and starts a new current). Good for log aggregation or bounded-size streams.</p>
+<h2 id="config-10"><a class="header" href="#config-10">Config</a></h2>
+<p>Options (see <code>RotateConfig</code> in the crate):</p>
+<ul>
+<li><strong>max_size</strong> — Max bytes per file before rotation.</li>
+<li><strong>max_files</strong> — Max number of rotated files to keep.</li>
+</ul>
+<h2 id="behavior-6"><a class="header" href="#behavior-6">Behavior</a></h2>
+<ul>
+<li>Write to a path (e.g. <code>/current</code>); the plugin manages rotation internally.</li>
+<li>Read from the current or from rotated segments as defined by the plugin layout.</li>
+<li>Implements create, read, write, and directory listing for the rotated set.</li>
+</ul>
+<h2 id="crate-10"><a class="header" href="#crate-10">Crate</a></h2>
+<p><code>racfs-plugin-streamrotatefs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="proxyfs"><a class="header" href="#proxyfs">ProxyFS</a></h1>
+<p><strong>Proxy to another RACFS server.</strong> Forwards all requests to a remote RACFS API. Use it to expose a second server under a path, aggregate multiple servers, or put a local path in front of a remote tree.</p>
+<h2 id="config-11"><a class="header" href="#config-11">Config</a></h2>
+<p>Requires the base URL of the remote server:</p>
+<pre><code class="language-toml">[mounts.remote]
+path = "/remote"
+fs_type = "proxyfs"
+url = "http://localhost:9090"
+</code></pre>
+<p>Start the other server on the given port (e.g. 9090) to test.</p>
+<h2 id="behavior-7"><a class="header" href="#behavior-7">Behavior</a></h2>
+<ul>
+<li>All <code>FileSystem</code> operations are translated to HTTP calls to the remote server.</li>
+<li>Paths under the mount are sent as paths to the remote API (e.g. <code>/remote/foo</code> → request to remote with path <code>/foo</code> or as configured).</li>
+</ul>
+<h2 id="crate-11"><a class="header" href="#crate-11">Crate</a></h2>
+<p><code>racfs-plugin-proxyfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="heartbeatfs"><a class="header" href="#heartbeatfs">HeartbeatFS</a></h1>
+<p><strong>Health monitoring filesystem.</strong> Exposes health and liveness info as read-only files: status, uptime, heartbeat counter. Useful for load balancers and readiness probes.</p>
+<h2 id="layout-2"><a class="header" href="#layout-2">Layout</a></h2>
+<ul>
+<li><strong>status</strong> — Read returns a simple status string (e.g. <code>ok</code>).</li>
+<li><strong>uptime</strong> — Uptime or similar metric.</li>
+<li>Other files may expose a heartbeat counter or timestamps.</li>
+</ul>
+<h2 id="config-12"><a class="header" href="#config-12">Config</a></h2>
+<p>No extra options:</p>
+<pre><code class="language-toml">[mounts.heartbeat]
+path = "/heartbeat"
+fs_type = "heartbeatfs"
+</code></pre>
+<h2 id="crate-12"><a class="header" href="#crate-12">Crate</a></h2>
+<p><code>racfs-plugin-heartbeatfs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="serverinfofs"><a class="header" href="#serverinfofs">ServerInfoFS</a></h1>
+<p><strong>Server information filesystem.</strong> Read-only files exposing server version, hostname, and other runtime info. Handy for debugging and version checks.</p>
+<h2 id="layout-3"><a class="header" href="#layout-3">Layout</a></h2>
+<ul>
+<li><strong>version</strong> — Server or crate version (e.g. <code>0.1.0</code>).</li>
+<li><strong>hostname</strong> — Hostname of the machine running the server.</li>
+<li>Other files as defined by the plugin.</li>
+</ul>
+<h2 id="config-13"><a class="header" href="#config-13">Config</a></h2>
+<p>No extra options:</p>
+<pre><code class="language-toml">[mounts.info]
+path = "/info"
+fs_type = "serverinfofs"
+</code></pre>
+<h2 id="crate-13"><a class="header" href="#crate-13">Crate</a></h2>
+<p><code>racfs-plugin-serverinfofs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hellofs"><a class="header" href="#hellofs">HelloFS</a></h1>
+<p><strong>Simple static read-only demo filesystem.</strong> Exposes a few fixed paths (e.g. <code>/hello</code>, <code>/version</code>) with static content. Use it to verify the server and FUSE mount without any real storage.</p>
+<h2 id="layout-4"><a class="header" href="#layout-4">Layout</a></h2>
+<ul>
+<li><strong>hello</strong> — Read returns <code>Hello, World!</code>.</li>
+<li><strong>version</strong> — Read returns a version string.</li>
+</ul>
+<p>Read-only; create/write/mkdir are not supported (return errors).</p>
+<h2 id="config-14"><a class="header" href="#config-14">Config</a></h2>
+<p>No extra options. Mount for testing:</p>
+<pre><code class="language-toml">[mounts.hello]
+path = "/hello"
+fs_type = "hellofs"
+</code></pre>
+<h2 id="crate-14"><a class="header" href="#crate-14">Crate</a></h2>
+<p><code>racfs-plugin-hellofs</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="pgsfs"><a class="header" href="#pgsfs">PgsFS</a></h1>
+<p><strong>PostgreSQL-backed filesystem.</strong> Stores files and directory structure in PostgreSQL. Suited for multi-process or distributed setups where SQL persistence is desired.</p>
+<h2 id="config-15"><a class="header" href="#config-15">Config</a></h2>
+<p>Requires a database connection (e.g. <code>DATABASE_URL</code> or config fields for host, database, user, password). See crate and server config for the exact schema.</p>
+<pre><code class="language-toml">[mounts.pgs]
+path = "/pgs"
+fs_type = "pgsfs"
+# ... PostgreSQL connection options
+</code></pre>
+<h2 id="behavior-8"><a class="header" href="#behavior-8">Behavior</a></h2>
+<ul>
+<li>Full <code>FileSystem</code> implementation: create, read, write, mkdir, read_dir, rename, remove, chmod.</li>
+<li>Data and metadata are stored in PostgreSQL tables.</li>
+<li>Integration tests require a running Postgres instance; see crate README/tests for how to run them.</li>
+</ul>
+<h2 id="crate-15"><a class="header" href="#crate-15">Crate</a></h2>
+<p><code>racfs-plugin-pgsfs</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

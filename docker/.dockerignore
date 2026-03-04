@@ -1,0 +1,30 @@
+# Git and IDE
+.git
+.gitignore
+.cursor
+.claude
+
+# Build artifacts (we build inside the container)
+target/
+
+# Docs and non-runtime
+docs/
+*.md
+!docker/README.md
+
+# CI and dev
+.github
+CLAUDE.md
+ROADMAP.md
+CHANGELOG.md
+deny.toml
+rustfmt.toml
+
+# SDKs and examples (not needed for server image)
+sdks/
+examples/
+templates/
+benches/
+
+# Tests (optional: exclude to shrink context; uncomment if build needs them)
+# crates/*/tests/

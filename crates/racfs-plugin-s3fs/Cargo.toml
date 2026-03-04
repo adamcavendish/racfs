@@ -1,0 +1,33 @@
+[package]
+name = "racfs-plugin-s3fs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bench]]
+name = "s3fs_ops"
+harness = false
+
+[dependencies]
+async-trait.workspace = true
+aws-config.workspace = true
+aws-credential-types.workspace = true
+aws-sdk-s3.workspace = true
+aws-types.workspace = true
+bytes.workspace = true
+chrono.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+
+racfs-core.workspace = true
+
+[dev-dependencies]
+aws-config.workspace = true
+aws-credential-types.workspace = true
+aws-sdk-s3.workspace = true
+criterion.workspace = true
+racfs-core.workspace = true
+testcontainers = "0.27"
+tokio.workspace = true

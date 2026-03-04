@@ -1,0 +1,21 @@
+# RACFS server config: MemFS + DevFS + StreamFS
+# StreamFS provides streaming /streams/{name} endpoints.
+# Usage: cargo run -p racfs-server -- --config examples/configs/streamfs.toml
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+
+[mounts.dev]
+path = "/dev"
+fs_type = "devfs"
+
+[mounts.streams]
+path = "/streams"
+fs_type = "streamfs"
+buffer_size = 1000
+history_size = 100
+max_streams = 100

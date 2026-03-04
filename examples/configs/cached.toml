@@ -1,0 +1,23 @@
+# RACFS server config: MemFS + DevFS with per-mount cache options
+# Shows optional [mounts.<name>.cache] for plugins that support caching (future use).
+# Usage: cargo run -p racfs-server -- --config examples/configs/cached.toml
+
+host = "127.0.0.1"
+port = 8080
+
+[mounts.memfs]
+path = "/memfs"
+fs_type = "memfs"
+
+[mounts.dev]
+path = "/dev"
+fs_type = "devfs"
+
+# Example: per-mount cache config (used when plugins integrate caching e.g. Foyer)
+[mounts.cached]
+path = "/cached"
+fs_type = "memfs"
+[mounts.cached.cache]
+enabled = true
+ttl_secs = 60
+max_entries = 1000

@@ -1,0 +1,19 @@
+[package]
+name = "racfs-plugin-pgsfs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+chrono.workspace = true
+futures.workspace = true
+sqlx.workspace = true
+tracing.workspace = true
+
+racfs-core.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

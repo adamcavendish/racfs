@@ -1,0 +1,25 @@
+[package]
+name = "racfs-plugin-memfs"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bench]]
+name = "memfs_ops"
+harness = false
+
+[dependencies]
+async-trait.workspace = true
+chrono.workspace = true
+parking_lot.workspace = true
+prometheus.workspace = true
+tracing.workspace = true
+
+racfs-core.workspace = true
+racfs-vfs.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true
+tokio.workspace = true
